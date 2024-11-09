@@ -1,6 +1,9 @@
+import 'package:basketball_counter_app/cubit/basektball_cubit.dart';
 import 'package:basketball_counter_app/widgets/Custom_Button.dart';
-import 'package:basketball_counter_app/widgets/custom_column.dart';
+import 'package:basketball_counter_app/widgets/custom_column_A.dart';
+import 'package:basketball_counter_app/widgets/custom_column_B.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -28,7 +31,7 @@ class _HomePageState extends State<HomePage> {
               Padding(
                 padding:
                     const EdgeInsets.symmetric(vertical: 16.0, horizontal: 4),
-                child: CustomColumn(
+                child: CustomColumnA(
                   teamTitle: "Team A",
                 ),
               ),
@@ -43,7 +46,7 @@ class _HomePageState extends State<HomePage> {
               Padding(
                 padding:
                     const EdgeInsets.symmetric(vertical: 16.0, horizontal: 4),
-                child: CustomColumn(
+                child: CustomColumnB(
                   teamTitle: "Team B",
                 ),
               ),
@@ -52,11 +55,14 @@ class _HomePageState extends State<HomePage> {
           const SizedBox(
             height: 20,
           ),
-          CustomButton(
-            text: "Reset",
-            onTap: () {
-              CustomColumn.score = 0;
-              setState(() {});
+          BlocBuilder<BasektballCubit, BasektballState>(
+            builder: (context, state) {
+              return CustomButton(
+                text: "Reset",
+                onTap: () {
+                  BlocProvider.of<BasektballCubit>(context).resetPoints();
+                },
+              );
             },
           )
         ],
