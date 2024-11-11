@@ -9,32 +9,32 @@ class BasektballCubit extends Cubit<BasektballState> {
   int scoreB = 0;
   add1PointA() {
     scoreA++;
-    emit(Add1PointSuccess());
+    emit(AddPointsTeamA());
   }
 
   add2PointsA() {
     scoreA += 2;
-    emit(Add2PointsSuccess());
+    emit(AddPointsTeamA());
   }
 
   add3PointsA() {
     scoreA += 3;
-    emit(Add3PointsSuccess());
+    emit(AddPointsTeamA());
   }
 
   add1PointB() {
     scoreB++;
-    emit(Add1PointSuccess());
+    emit(AddPointsTeamB());
   }
 
   add2PointsB() {
     scoreB += 2;
-    emit(Add2PointsSuccess());
+    emit(AddPointsTeamB());
   }
 
   add3PointsB() {
     scoreB += 3;
-    emit(Add3PointsSuccess());
+    emit(AddPointsTeamB());
   }
 
   resetPoints() {
